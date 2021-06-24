@@ -1,0 +1,83 @@
+<style>
+
+#i1 {
+position : absolute;
+left :450px;
+top:20px;
+}
+
+#in1 {
+position : absolute;
+left :450px;
+top:260px;
+height:40px;
+width:350px;
+border-radius:20px;
+}
+
+#b1 {
+position : absolute;
+left :850px;
+background-color:white;
+color:#04AA6D;
+font-size:20px;
+top :265px;
+}
+
+#b1:hover {
+background-color:#04AA6D;
+color:white;
+}
+
+#in2 {
+position : absolute;
+top :400px;
+text-align :justify;
+left:150px;
+}
+
+.button {
+position : absolute;
+left :1200px;
+background-color:#FF0000;
+color:white;
+font-size:20px;
+top :490px;
+border:none;
+padding: 20px 34px;
+text-align:center;
+display:inline-block;
+
+}
+
+
+</style>
+
+<script>
+
+function lw() {
+var i= document.getElementById("in1").value
+var xhr = new XMLHttpRequest();
+xhr.open("GEt","http://192.168.0.101/cgi-bin/lw.py?x=" + i,true)
+xhr.send();
+xhr.onload = function() {
+         var output = xhr.responseText;
+	 document.getElementById("in2").innerHTML = output;
+}
+}
+
+</script>
+
+<input id ="in1" placeholder="   Enter the docker command" />
+<pre>
+
+<img id="i1" src="docker1.png" height="200" width="350">
+<div id="in2">Output will be displayed here ...</div>
+</pre>
+
+
+<button id="b1" onclick = "lw()">Submit</button>
+<a href="http://192.168.0.101/exit.html" class="button">Exit</a>
+
+
+
